@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label for="body">Content</label>
-                <textarea class="form-control {{ $errors->has('body') ? ' is-invalid' : '' }}" id="body" name="body" rows="3" required>{{ old('body') }}</textarea>
+                <textarea class="form-control {{ $errors->has('body') ? ' is-invalid' : '' }}" id="body" name="body" rows="3" maxlength="50" required>{{ old('body') }}</textarea>
                 @if ($errors->has('body'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('body') }}</strong>

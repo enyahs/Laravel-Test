@@ -46,7 +46,7 @@ class PostsController extends Controller
         $this->validate($request, 
             [
                 'title' => 'required|string|min:3|max:255',
-                'body' => 'required|string',
+                'body' => 'required|string|min:10|max:5000',
             ]
         );
         
@@ -106,7 +106,7 @@ class PostsController extends Controller
         $this->validate($request, 
             [
                 'title' => 'required|string|min:3|max:255',
-                'body' => 'required|string|min:10',
+                'body' => 'required|string|min:10|max:5000',
             ]
         );
 
