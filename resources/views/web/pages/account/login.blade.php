@@ -2,19 +2,15 @@
 
 @section('content')
     <main>
-        @if (session('status'))
-            <div class="alert alert-success mt-4 mx-2" role="alert">
-                {{ session('status') }}
-            </div>
-        @elseif ($errors->any())
-            <div class="alert alert-danger mt-4 mx-2" role="alert">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </div>
-        @endif
         <div class="login mt-4">
-            <div class="container login-container p-4 text-center">
+            <div class="container account-container p-4 text-center">
+                @if ($errors->any())
+                    <div class="alert alert-danger mb-5 mx-2" role="alert">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Sign In') }}">
                     @csrf
                     <div class="display-4 mb-5">
@@ -30,7 +26,7 @@
                         @endif
                     </div>
                     <div class="mt-3">
-                        <input id="password" class="border-top-0 w-100 ft-5 py-4 border-right-0 border-left-0 border-bottom{{ $errors->has('password') ? ' is-invalid' : '' }}" style="background: transparent;" type="password" name="password"placeholder="Password" required>
+                        <input id="password" class="border-top-0 w-100 ft-5 py-4 border-right-0 border-left-0 border-bottom{{ $errors->has('password') ? ' is-invalid' : '' }}" style="background: transparent;" type="password" name="password" placeholder="Password" required>
                         
                         @if ($errors->has('password'))
                             <span class="invalid-feedback" role="alert">
