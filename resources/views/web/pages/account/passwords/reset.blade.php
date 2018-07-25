@@ -2,19 +2,15 @@
 
 @section('content')
     <main>
-        @if (session('status'))
-            <div class="alert alert-success mt-4 mx-2" role="alert">
-                {{ session('status') }}
-            </div>
-        @elseif ($errors->any())
-            <div class="alert alert-danger mt-4 mx-2" role="alert">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </div>
-        @endif
         <div class="reset-password mt-4">
             <div class="container account-container p-4 text-center">
+                @if ($errors->any())
+                    <div class="alert alert-danger mb-5 mx-2" role="alert">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('password.request') }}" aria-label="{{ __('Reset Password') }}">
                     @csrf
                     
