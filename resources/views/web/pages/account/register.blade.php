@@ -2,19 +2,15 @@
 
 @section('content')
     <main>
-        @if (session('status'))
-            <div class="alert alert-success mt-4 mx-2" role="alert">
-                {{ session('status') }}
-            </div>
-        @elseif ($errors->any())
-            <div class="alert alert-danger mt-4 mx-2" role="alert">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </div>
-        @endif
         <div class="signup mt-4">
-            <div class="container signup-container p-4 text-center">
+            <div class="container account-container p-4 text-center">
+                @if ($errors->any())
+                    <div class="alert alert-danger mb-5 mx-2" role="alert">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                     @csrf
                     <div class="display-4 mb-5">
