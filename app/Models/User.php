@@ -27,7 +27,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function posts()
+    /**
+     * Relationship: post
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function post()
     {
         return $this->hasMany('App\Models\Post', 'id', 'user_id');
     }
