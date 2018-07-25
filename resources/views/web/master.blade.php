@@ -11,7 +11,7 @@
         {{-- Page Title --}}
         <title>@if(View::hasSection('title'))@yield('title') - {{ config('app.name', 'ENYAHS') }}@elseif(isset($title)) {{ $title . " - " . config('app.name') }} @else{{ config('app.name') }}@endif</title>
         
-        {{-- Page Data --}}
+        {{-- Page Information --}}
         <meta name="description" content="{{ (isset($description) && is_string($description)) ? $description : 'No Description.'}}">
         <meta name="keywords" content="{{ (isset($keywords) && is_array($keywords)) ? implode(',', $keywords) : ''}}">
         <meta name="author" content="{{ config('app.name', 'ENYAHS') }}">
@@ -37,7 +37,10 @@
 
         @yield('core-template')
 
+        {{-- Global Javascript --}}
         <script src="{{ asset('js/app.js') }}" defer></script>
+        
+        {{-- Javascript --}}
         @stack('scripts')
 
     </body>
