@@ -11,11 +11,23 @@
 |
 */
 
-// Homepage
-Route::get('/', 'General\HomeController@home')->name('home')->middleware('guest');
+// General Group
+Route::group(['namespace' => 'General'], function()
+{
 
-// Post Resource
-Route::resource('/post', 'General\Resources\PostsController')->middleware('auth', ['except' => ['index','show']]);
+    // Homepage
+    Route::get('/', 'HomeController@home')->name('home')->middleware('guest');
+
+    // Resources Group
+    Route::group(['namespace' => 'Resources'], function()
+    {
+
+        // Post Resource
+        Route::resource('/post', 'PostsController')->middleware('auth', ['except' => ['index','show']]);
+
+    });
+
+});
 
 // Auth
 Auth::routes();

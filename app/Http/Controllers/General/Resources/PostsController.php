@@ -16,7 +16,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('web/pages/posts/index', [
+        return view('web.pages.general.posts.index', [
             "title" => "View Posts",
             "posts" => Post::with("user")->paginate(10),
         ]);
@@ -29,7 +29,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('web/pages/posts/create', [
+        return view('web.pages.general.posts.create', [
             "title" => "Create Post",
         ]);
     }
@@ -70,7 +70,7 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-        return view('web/pages/posts/show', [
+        return view('web.pages.general.posts.show', [
             "title" => "Show Post",
             "post" => $post,
         ]);
@@ -86,7 +86,7 @@ class PostsController extends Controller
     {
         $this->authorize('update', $post);
 
-        return view('web/pages/posts/edit', [
+        return view('web.pages.general.posts.edit', [
             "title" => "Edit Post",
             "post" => $post,
         ]);

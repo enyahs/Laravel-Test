@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        return view('web/pages/system/home', [
+        return view('web/pages/general/home', [
             "title" => "Home",
         ]);
     }
