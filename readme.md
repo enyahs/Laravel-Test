@@ -1,16 +1,13 @@
 ## Laravel Test
-Testing the Laravel framework.
+A Laravel Example Project.
 
 #### Showcased
 
 - Views
 - Blade multilingual testing.
 - Controllers
-- Routes
+- Routes (Groups, Names, Middleware)
 - AUTH
-- Models
-- Relations
-- Migrations, Seeds & Factories
-- Bootstrap Build Setup
-- Laravel Middleware
+- Models (Relations, Migrations, Seeds, Factories)
+- Bootstrap
 - Policies
