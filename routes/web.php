@@ -12,10 +12,10 @@
 */
 
 // Homepage
-Route::get('/', 'System\HomeController@home')->name('home')->middleware('guest');
+Route::get('/', 'General\HomeController@home')->name('home')->middleware('guest');
 
 // Post Resource
-Route::resource('/post', 'PostsController')->middleware('auth', ['except' => ['index','show']]);
+Route::resource('/post', 'General\Resources\PostsController')->middleware('auth', ['except' => ['index','show']]);
 
 // Auth
 Auth::routes();
