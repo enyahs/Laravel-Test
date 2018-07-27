@@ -11,3 +11,4 @@ A Laravel Example Project.
 - Models (Relations, Migrations, Seeds, Factories)
 - Bootstrap
 - Policies
+- Tests (WIP)
