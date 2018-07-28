@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
+use Illuminate\Routing\RouteCollection;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -13,15 +14,10 @@ class UserLoginTest extends TestCase
 
     /**
      * A test user.
+     * 
+     * @var \App\Models\User
      */
     protected $user;
-
-    /**
-     * A route used for testing.
-     * 
-     * @var string
-     */
-    protected $login_route;
 
     /**
      * Setup test.
@@ -33,7 +29,7 @@ class UserLoginTest extends TestCase
 
         parent::setUp();
 
-        $this->login_route = route('login');
+        //  Create test user.
         $this->user = factory(User::class)->create();
 
     }
@@ -46,7 +42,7 @@ class UserLoginTest extends TestCase
     public function test_login_route()
     {
         
-        $this->get($this->login_route)
+        $this->get(route('login'))
             ->assertStatus(200);
 
     }
@@ -59,7 +55,7 @@ class UserLoginTest extends TestCase
     public function test_user_can_login()
     {
 
-        $this->post($this->login_route, [
+        $this->post(route('login'), [
 
             'email' => $this->user->email,
             'password' => 'secret'
@@ -90,7 +86,7 @@ class UserLoginTest extends TestCase
     public function test_user_cant_login_without_email()
     {
 
-        $this->post($this->login_route, [
+        $this->post(route('login'), [
 
             'email' => '',
             'password' => $this->user->password
@@ -107,12 +103,29 @@ class UserLoginTest extends TestCase
     public function test_user_cant_login_without_password()
     {
 
-        $this->post($this->login_route, [
+        $this->post(route('login'), [
 
             'email' => $this->user->email,
             'password' => ''
 
         ])->assertSessionHasErrors('password');
+
+    }
+
+    /**
+     * Test a user can't login with invalid data.
+     * 
+     * @return void
+     */
+    public function test_user_cant_login_with_invalid_data()
+    {
+
+        $this->post(route('login'), [
+
+            'email' => 'emailn0tf0und@test.com',
+            'password' => 'thisisn0tmypass'
+
+        ])->assertSessionHasErrors();
 
     }
 

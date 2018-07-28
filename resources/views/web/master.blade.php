@@ -35,6 +35,7 @@
 
     <body class='m-0 position-relative'>
 
+        {{-- Core Template --}}
         @yield('core-template')
 
         {{-- Global Javascript --}}
