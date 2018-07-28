@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/post';
 
     /**
      * Create a new controller instance.
@@ -44,6 +44,6 @@ class LoginController extends Controller
      */
     public function showLoginForm() 
     {
-        return view('web.pages.general.account.login');
+        return view('web.pages.account.login');
     }
 }
