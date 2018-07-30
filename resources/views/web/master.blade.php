@@ -12,7 +12,7 @@
         <title>@if(View::hasSection('title'))@yield('title') - {{ config('app.name', 'ENYAHS') }}@elseif(isset($title)) {{ $title . " - " . config('app.name') }} @else{{ config('app.name') }}@endif</title>
         
         {{-- Page Information --}}
-        <meta name="description" content="{{ (isset($description) && is_string($description)) ? $description : 'No Description.'}}">
+        <meta name="description" content="{{ $description or '' }}">
         <meta name="keywords" content="{{ (isset($keywords) && is_array($keywords)) ? implode(',', $keywords) : ''}}">
         <meta name="author" content="{{ config('app.name', 'ENYAHS') }}">
 
@@ -33,7 +33,7 @@
 
     </head>
 
-    <body class='m-0 position-relative'>
+    <body class="m-0 position-relative">
 
         {{-- Core Template --}}
         @yield('core-template')
